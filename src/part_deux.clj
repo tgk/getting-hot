@@ -156,3 +156,13 @@
       (add-value :temp-c #{110/4 280/3})
       (get-value :temp-c)))
 ;; => 280/3
+
+(let [my-merge (doto (default-merge)
+                 extend-merge)
+      my-contradictory? (default-contradictory?)]
+  (-> (make-system my-merge my-contradictory?)
+      (c-f-relation :temp-f :temp-c)
+      (add-value :temp-f #{100N 200N})
+      (add-value :temp-c #{110/4 280/3})
+      (get-value :temp-f)))
+;; => 200N
