@@ -3,8 +3,10 @@
 An example of how to use propagators to represent temperatures in two
 different forms.
 
-The article referencing this code example can be found
-[here](http://tgk.github.io/2014/01/getting-hot-with-propagators.html).
+The articles referencing this code example can be found
+[here](http://tgk.github.io/2014/01/getting-hot-with-propagators.html)
+and
+[here (part two)](http://tgk.github.io/2014/01/taking-propagators-to-the-next-level.html).
 
 ## License
 
