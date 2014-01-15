@@ -23,13 +23,13 @@
 (def divide (generic-set-operator /))
 
 (plus 1 2)
-;; 3
+;; => 3
 (plus #{1 2 3} 4)
-;; #{5 6 7}
+;; => #{5 6 7}
 (plus 4 #{1 2 3})
-;; #{5 6 7}
+;; => #{5 6 7}
 (plus #{1 2 3} #{1 2 3})
-;; #{2 3 4 5 6}
+;; => #{2 3 4 5 6}
 
 (def plusp (function->propagator-constructor plus))
 (def minusp (function->propagator-constructor minus))
@@ -55,14 +55,14 @@
     (add-value :a 10)
     (add-value :b 2)
     (get-value :c))
-;; 20
+;; => 20
 
 (-> (make-system)
     (prod :a :b :c)
     (add-value :a 2)
     (add-value :c 84)
     (get-value :b))
-;; 42
+;; => 42
 
 (defn c-f-relation
   [system f c]
@@ -79,20 +79,13 @@
     (c-f-relation :temp-f :temp-c)
     (add-value :temp-f 100N)
     (get-value :temp-c))
-;; 340/9
+;; => 340/9
 
 (-> (make-system)
     (c-f-relation :temp-f :temp-c)
     (add-value :temp-c 340/9)
     (get-value :temp-f))
-;; 100N
-
-(-> (make-system)
-    (c-f-relation :temp-f :temp-c)
-    (add-value :temp-f 100N)
-    (add-value :temp-c 340/9)
-    (get-value :temp-c))
-;; 340/9
+;; => 100N
 
 #_(-> (make-system)
     (c-f-relation :temp-f :temp-c)
@@ -143,7 +136,7 @@
       (c-f-relation :temp-f :temp-c)
       (add-value :temp-f 100N)
       (get-value :temp-c)))
-;; 340/9
+;; => 340/9
 
 (let [my-merge (doto (default-merge)
                  extend-merge)
@@ -152,7 +145,7 @@
       (c-f-relation :temp-f :temp-c)
       (add-value :temp-f #{100N 200N})
       (get-value :temp-c)))
-;; #{280/3 340/9}
+;; => #{280/3 340/9}
 
 (let [my-merge (doto (default-merge)
                  extend-merge)
@@ -162,4 +155,4 @@
       (add-value :temp-f #{100N 200N})
       (add-value :temp-c #{110/4 280/3})
       (get-value :temp-c)))
-;; 280/3
+;; => 280/3
